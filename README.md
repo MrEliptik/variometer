@@ -6,11 +6,11 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
+<!--[![Contributors][contributors-shield]][contributors-url]-->
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![Licence][license-shield]][license-url]
 
 
 
@@ -119,12 +119,11 @@ Victor MEUNIER - [@VicMeunier](https://twitter.com/VicMeunier) - victormeunier.d
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/MrEliptik/variomete.svg?style=flat-square
 [contributors-url]: https://github.com/MrEliptik/variometer/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/MrEliptik/variomete.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/MrEliptik/variometer
 [forks-url]: https://github.com/MrEliptik/variometer/network/members
-[stars-shield]: https://img.shields.io/github/stars/MrEliptik/variometee.svg?style=flat-square
-[stars-url]: https://github.com/MrEliptik/variometere/stargazers
-[issues-shield]: https://img.shields.io/github/issues/MrEliptik/variomete.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/MrEliptik/variometer
+[stars-url]: https://github.com/MrEliptik/variometer/stargazers
+[issues-shield]: 	https://img.shields.io/github/issues/MrEliptik/variometer
 [issues-url]: https://github.com/MrEliptik/variometer/issues
-[license-shield]: https://img.shields.io/github/license/MrEliptik/variometee.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/MrEliptik/variometer
 [license-url]: https://github.com/MrEliptik/variometer/blob/main/LICENSE
-[product-screenshot]: 
