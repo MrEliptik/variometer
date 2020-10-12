@@ -26,7 +26,7 @@
   <p align="center">
    An ESP8266 based variometer made for paragliding. (GPS, variometer, altimeter, compass)
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/MrEliptik/variometer/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="">View Demo</a>
@@ -61,7 +61,7 @@ I'm starting paragliding and at some point I'll want a variometer to help me wit
 ### Built With
 
 *TODO*
-* []()
+[]()
 
 
 <!-- GETTING STARTED -->
