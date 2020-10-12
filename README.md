@@ -12,8 +12,6 @@
 [![Issues][issues-shield]][issues-url]
 [![Licence][license-shield]][license-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -60,8 +58,12 @@ I'm starting paragliding and at some point I'll want a variometer to help me wit
 
 ### Built With
 
-*TODO*
-[]()
+- [Generic ESP8266 dev board]()
+- [GY-68 BMP-180 pressure/temperature sensor](https://fr.aliexpress.com/item/32974445995.html?spm=a2g0s.9042311.0.0.27426c37v9jqwu)
+- [GY-9250 9DOF accelerometer/gyroscope/magnetometer](https://fr.aliexpress.com/item/32657047350.html?spm=a2g0o.productlist.0.0.71877b5fs1ykll&algo_pvid=a9503d7c-d666-4761-9f6f-1a5cf54e499b&algo_expid=a9503d7c-d666-4761-9f6f-1a5cf54e499b-2&btsid=0b0a187916025200564147019ec887&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
+- [2.0" TFT LCD screen](https://fr.aliexpress.com/item/33012793224.html?spm=a2g0w.search0302.3.8.75f62fb68GrkRi&ws_ab_test=searchweb0_0,searchweb201602_0,searchweb201603_0,ppcSwitch_0&algo_pvid=bfeaa64b-7135-4d79-a3ac-2a1fbdff3feb&algo_expid=bfeaa64b-7135-4d79-a3ac-2a1fbdff3feb-1)
+- [BEITIAN BN-280 GPS](https://fr.aliexpress.com/item/33028598418.html?spm=a2g0s.9042311.0.0.27426c37v9jqwu)
+- [5 way joystick](https://fr.aliexpress.com/item/32904543849.html?spm=a2g0s.9042311.0.0.27426c37YqAQKb)
 
 
 <!-- GETTING STARTED -->
