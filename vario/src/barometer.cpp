@@ -8,6 +8,8 @@ double baseline_altitude;
 double last_pressure;
 double last_altitude;
 
+float sea_level_pressure = 1013.25;
+
 
 int setupBarometer() {
     if (baro.begin()) {
@@ -84,10 +86,18 @@ float getPressure() {
     return(P);
 }
 
-float getAltitude() {
+float getAltitudeDelta() {
     double P;
     P = getPressure();
     if (P == -1) return -1;
 
     return baro.altitude(P, baseline_pressure);
+}
+
+float getAltitude() {
+    double P;
+    P = getPressure();
+    if (P == -1) return -1;
+
+    return baro.altitude(P, sea_level_pressure);
 }

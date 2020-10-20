@@ -16,6 +16,7 @@ int setupBarometer();
 
 float getTemperature();
 float getPressure();
+float getAltitudeDelta();
 float getAltitude();
 
 #endif
