@@ -14,13 +14,13 @@ void loop() {
   //lastTime = millis();
 
   Serial.println("");
-  Serial.println("##############");
+  Serial.println("###################");
 
   Serial.print("Temperature: ");
   Serial.println(getTemperature());
 
   Serial.print("Pressure: ");
-  Serial.println(getPressure());
+  Serial.println(getAbsolutePressure());
 
   Serial.print("Altitude: ");
   Serial.println(getAltitude());

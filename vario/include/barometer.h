@@ -15,7 +15,7 @@ extern double last_altitude;
 int setupBarometer();
 
 float getTemperature();
-float getPressure();
+float getAbsolutePressure();
 float getAltitudeDelta();
 float getAltitude();
 
