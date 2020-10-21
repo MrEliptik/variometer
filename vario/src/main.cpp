@@ -18,7 +18,8 @@ float curr_waiting_time = 1000.0;
 double last_smoother_ascent_rate = 1.0;
 const float SMOOTHING_WEIGHT = 0.15;
 
-const enum {
+
+enum {
     UP,
     LEFT,
     DOWN,
@@ -26,6 +27,8 @@ const enum {
     RIGHT,
     NONE
 };
+
+int joystick_previous_state = NONE;
 
 void setup() {
     Serial.begin(115200);
@@ -55,7 +58,8 @@ void loop() {
     Serial.println(getAltitudeDelta());
     */
     int b = readButtons(JOYSTICK_PIN);
-
+    //Serial.println(b);
+    if (b != NONE) Serial.println(b);
     /*
     float ascent_rate = getAscentRate(lastTime);
     Serial.print("Ascent rate: ");
@@ -76,12 +80,21 @@ void loop() {
 
 int readButtons(int pin) {
     int c = analogRead(JOYSTICK_PIN);
-    if(c > 870) return UP;
-    else if(c < 840 && c > 800) return(LEFT);
-    else if(c < 660 && c > 600) return(DOWN);
-    else if(c < 580 && c > 520) return(PRESS);
-    else if(c < 450 && c > 400) return(RIGHT);
-    return(NONE);
+    int b = NONE;
+    if(c > 870) b = UP; 
+    else if(c < 840 && c > 800) b = LEFT;
+    else if(c < 660 && c > 600) b = DOWN;
+    else if(c < 580 && c > 520) b = PRESS;
+    else if(c < 450 && c > 400) b = RIGHT;
+
+    if (joystick_previous_state != b){
+        joystick_previous_state = b;
+        return b;
+    }
+    else{
+        joystick_previous_state = b;
+        return NONE;
+    }
 }
 
 void beep(float smoothed_ascent_rate) {

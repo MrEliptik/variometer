@@ -12,6 +12,8 @@
 
 #define JOYSTICK_PIN A0
 
+int readButtons(int pin);
+void beep(float smoothed_ascent_rate);
 // Screen res 
 //176*220
 //driver: ILI9225
