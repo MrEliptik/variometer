@@ -16,13 +16,13 @@
 <br />
 <p align="center">
   <a href="https://github.com/MrEliptik/variometer">
-    <img src="" alt="Logo" width="80" height="80">
+    <img src="MEDIAS/vario_banner.png" alt="Logo" width="640">
   </a>
 
   <h3 align="center"Variometer</h3>
 
   <p align="center">
-   An ESP8266 based variometer made for paragliding. (GPS, variometer, altimeter, compass)
+   An ESP32 based variometer made for paragliding. (GPS, variometer, altimeter, compass)
     <br />
     <a href="https://github.com/MrEliptik/variometer/wiki"><strong>Explore the docs »</strong></a>
     <br />
