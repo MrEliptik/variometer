@@ -28,14 +28,75 @@ void displayStatusBar() {
     tft.drawBitmap(190, 2, battery, 24, 24, COLOR_WHITE);
 }
 
-void displayMenu() {
-    displayStatusBar();
-    tft.fillCircle(tft.maxX()/8, tft.maxY()/2, 22, COLOR_LIGHTCYAN);
-    tft.fillCircle(tft.maxX()/8*7, tft.maxY()/2, 22, COLOR_LIGHTCYAN);
+void displayMenu(int state) {
+    //displayStatusBar();
+    tft.drawCircle(25, tft.maxY()/2, 22, COLOR_LIGHTCYAN);
+    tft.drawCircle(tft.maxX()-25, tft.maxY()/2, 22, COLOR_LIGHTCYAN);
     tft.drawCircle(tft.maxX()/2, tft.maxY()/2, 56, COLOR_WHITE);
-    tft.fillCircle(tft.maxX()/2, tft.maxY()/2, 55, COLOR_INDIGO);
-    tft.drawBitmap((tft.maxX()/2)-(48/2), (tft.maxY()/2)-(48/2), barometer, 48, 48, COLOR_WHITE);
-    tft.drawText((tft.maxX()/2)-(30), 160, "VARIO");
+
+    switch (state)
+    {
+    case 0: // VARIO
+        tft.drawBitmap((tft.maxX()/2)-(96/2), (tft.maxY()/2)-(96/2), barometer_big, 96, 96, COLOR_DARKCYAN);
+        tft.drawText((tft.maxX()/2)-(30), 160, "VARIO");
+        break;
+    case 1: // COMPASS
+        tft.drawBitmap((tft.maxX()/2)-(96/2), (tft.maxY()/2)-(96/2), compass_big, 96, 96, COLOR_BROWN);
+        tft.drawText((tft.maxX()/2)-(40), 160, "COMPASS");
+        break;
+    case 2: // GPS
+        tft.drawBitmap((tft.maxX()/2)-(96/2), (tft.maxY()/2)-(96/2), gps_big, 96, 96, COLOR_RED);
+        tft.drawText((tft.maxX()/2)-(30), 160, "GPS");
+        break;
+    case 3: // ALL
+        break;
+    case 4: // SETTINGS
+        tft.drawBitmap((tft.maxX()/2)-(96/2), (tft.maxY()/2)-(96/2), settings_big, 96, 96, COLOR_DARKGRAY);
+        tft.drawText((tft.maxX()/2)-(45), 160, "SETTINGS");
+    }
+
+    // Display right item
+    int next_state = state + 1;
+    if (next_state > 4) next_state = 0;
+    switch (next_state)
+    {
+    case 0: // VARIO
+        tft.drawBitmap(tft.maxX()-25-(36/2), (tft.maxY()/2)-(36/2), barometer_small, 36, 36, COLOR_DARKCYAN);
+        break;
+    case 1: // COMPASS
+        tft.drawBitmap(tft.maxX()-25-(36/2), (tft.maxY()/2)-(36/2), compass_small, 36, 36, COLOR_BROWN);
+        break;
+    case 2: // GPS
+        tft.drawBitmap(tft.maxX()-25-(36/2), (tft.maxY()/2)-(36/2), gps_small, 36, 36, COLOR_RED);
+
+        break;
+    case 3: // ALL
+        break;
+    case 4: // SETTINGS
+        tft.drawBitmap(tft.maxX()-25-(36/2), (tft.maxY()/2)-(36/2), settings_small, 36, 36, COLOR_DARKGRAY);
+    }
+
+    // Display right item
+    next_state = state - 1;
+    if (next_state < 0) next_state = 4;
+    switch (next_state)
+    {
+    case 0: // VARIO
+        tft.drawBitmap(25-(36/2), (tft.maxY()/2)-(36/2), barometer_small, 36, 36, COLOR_DARKCYAN);
+        break;
+    case 1: // COMPASS
+        tft.drawBitmap(25-(36/2), (tft.maxY()/2)-(36/2), compass_small, 36, 36, COLOR_BROWN);
+        break;
+    case 2: // GPS
+        tft.drawBitmap(25-(36/2), (tft.maxY()/2)-(36/2), gps_small, 36, 36, COLOR_RED);
+        break;
+    case 3: // ALL
+        break;
+    case 4: // SETTINGS
+        tft.drawBitmap(25-(36/2), (tft.maxY()/2)-(36/2), settings_small, 36, 36, COLOR_DARKGRAY);
+        break;
+    }
+
 }
 
 /* ############# VARIO ############# */
