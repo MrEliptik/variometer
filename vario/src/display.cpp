@@ -1,0 +1,79 @@
+#include <display.h>
+
+// Use software SPI (slower)
+//TFT_22_ILI9225 tft = TFT_22_ILI9225(TFT_RST, TFT_RS, TFT_CS, TFT_SDI, TFT_CLK, TFT_LED);
+// Use hardware SPI (library has been modified in TFT_22_ILI8225.cpp l311)
+TFT_22_ILI9225 tft = TFT_22_ILI9225(TFT_RST, TFT_RS, TFT_CS, TFT_SDI, TFT_CLK, TFT_LED);
+
+void setupDisplay(int orientation, uint8_t * font) {
+    tft.begin();
+    tft.setOrientation(orientation);
+    tft.setFont(font);
+}
+
+void clearDisplay() { 
+    tft.clear();
+}
+
+void displayStr(uint16_t x, uint16_t y, String msg) { 
+    tft.drawText(x, y, msg);
+}
+
+void displayStatusBar() {
+    tft.fillRectangle(0, 0, tft.maxX()-1, 25, COLOR_WHITE);
+    tft.fillRectangle(1, 1, tft.maxX()-2, 24, COLOR_DARKGRAY);
+    tft.drawBitmap(5, 2, up_right_arrow, 25, 25, COLOR_WHITE);
+    tft.drawText((tft.maxX()/2)-25, 5, "17:24");
+    tft.drawBitmap(190-25, 2, sd_card, 25, 25, COLOR_WHITE);
+    tft.drawBitmap(190, 2, battery, 24, 24, COLOR_WHITE);
+}
+
+void displayMenu() {
+    displayStatusBar();
+    tft.fillCircle(tft.maxX()/8, tft.maxY()/2, 22, COLOR_LIGHTCYAN);
+    tft.fillCircle(tft.maxX()/8*7, tft.maxY()/2, 22, COLOR_LIGHTCYAN);
+    tft.drawCircle(tft.maxX()/2, tft.maxY()/2, 56, COLOR_WHITE);
+    tft.fillCircle(tft.maxX()/2, tft.maxY()/2, 55, COLOR_INDIGO);
+    tft.drawBitmap((tft.maxX()/2)-(48/2), (tft.maxY()/2)-(48/2), barometer, 48, 48, COLOR_WHITE);
+    tft.drawText((tft.maxX()/2)-(30), 160, "VARIO");
+}
+
+/* ############# VARIO ############# */
+void displayVarioPage(){
+
+    // Ascent rate, middle  
+    displayStr(170, 50, "m/s");
+
+    // Temperature, lower middle
+    tft.drawBitmap(60, (tft.maxY()/2)+15, thermometer_small, 25, 25, COLOR_WHITE);
+    displayStr(150, (tft.maxY()/2)+20, "C");
+    
+    // Pressure, left of the screen
+    tft.drawBitmap(30, tft.maxY()-48, barometer_small, 25, 25, COLOR_WHITE);
+    displayStr(65, 155, "hPa");
+
+    // Altitude, right of the screen
+    tft.drawBitmap(tft.maxX()-58, tft.maxY()-48, mountain, 25, 25, COLOR_WHITE);
+    
+    displayStr(200, 155, "m");
+}
+
+void displayVarioInfos(float altitude, float pressure, float temperature, float ascent_rate) {
+    tft.drawRectangle(0, 100, tft.maxX()-1, tft.maxY()-1, COLOR_GRAY);
+
+    tft.drawRectangle(0, 25, tft.maxX()-1, 99, COLOR_WHITE);
+    // Ascent rate
+    // Draw rectangle before to avoid seeing the bitmap below
+    tft.fillRectangle(15, 35, 15+48, 45+48, COLOR_BLACK);
+    if (ascent_rate > 0) tft.drawBitmap(15, 35, ascend, 48, 48, COLOR_GREEN);
+    else tft.drawBitmap(15, 35, descend, 48, 48, COLOR_RED);
+      
+    displayStr(90, STATUS_BAR_OFFSET_Y+15, String(ascent_rate, 1));
+
+    // Temp
+    displayStr(90, (tft.maxY()/2)+20, String(temperature, 1));
+
+    // Pressure, temp, altitude
+    displayStr(130, STATUS_BAR_OFFSET_Y+120, String((int)altitude));
+    displayStr(10, STATUS_BAR_OFFSET_Y+120, String((int)pressure));
+}
