@@ -110,7 +110,7 @@ void displayVarioPage(){
     displayStr(150, (tft.maxY()/2)+20, "C");
     
     // Pressure, left of the screen
-    tft.drawBitmap(30, tft.maxY()-48, barometer_small, 25, 25, COLOR_WHITE);
+    tft.drawBitmap(30, tft.maxY()-48, barometer_25, 25, 25, COLOR_WHITE);
     displayStr(65, 155, "hPa");
 
     // Altitude, right of the screen
