@@ -45,7 +45,6 @@ enum LCD {
 };
 
 enum VARIO_STATE {
-    HOME,
     HOME_VARIO,
     HOME_GPS,
     HOME_COMPASS,

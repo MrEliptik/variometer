@@ -30,7 +30,7 @@ const float SMOOTHING_WEIGHT = 0.15;
 
 JOYSTICK joystick_previous_state = NONE;
 
-VARIO_STATE vario_state = VARIO;
+VARIO_STATE vario_state = HOME_VARIO;
 // Different previous state to have a first update
 VARIO_STATE previous_vario_state = HOME_SETTINGS;
 
@@ -77,13 +77,9 @@ void loop() {
 
     /* Changing state */
     switch(vario_state){
-        case HOME: 
-            if(b == RIGHT) vario_state = HOME_VARIO;
-            else if(b == LEFT) vario_state = HOME_SETTINGS;
-            break;
         case HOME_VARIO: 
             if(b == RIGHT) vario_state = HOME_GPS;
-            else if(b == LEFT) vario_state = HOME;
+            else if(b == LEFT) vario_state = HOME_SETTINGS;
             else if(b == PRESS) vario_state = VARIO;
             break;
         case HOME_GPS: 
@@ -102,7 +98,7 @@ void loop() {
             else if(b == PRESS) vario_state = ALL;
             break;
         case HOME_SETTINGS: 
-            if(b == RIGHT) vario_state = HOME;
+            if(b == RIGHT) vario_state = HOME_VARIO;
             else if(b == LEFT) vario_state = HOME_ALL;
             else if(b == PRESS) vario_state = SETTINGS;
             break;
@@ -142,42 +138,26 @@ void loop() {
     else time_to_display = false;
 
     switch(vario_state){
-        case HOME: 
-            //time = micros();
-           if (time_to_display) displayMenu(); //displayStr(90, 80, "HOME");
-            /*
-            Serial.print("Writing takes: ");
-            Serial.print((micros()-time)/1000.0);
-            Serial.println(" ms");
-            */
-            break;
         case HOME_VARIO:
-            if (time_to_display) displayStr(90, 80, "VARIO");
+            if (first_time_state) displayMenu(HOME_VARIO);
+            //if (time_to_display) displayMenu(HOME_VARIO); //displayStr(90, 80, "VARIO");
             break;
         case HOME_COMPASS:
-            if (time_to_display) displayStr(70, 80, "COMPASS");
+            if (first_time_state) displayMenu(HOME_COMPASS);
             break;
         case HOME_GPS:
-            if (time_to_display) displayStr(90, 80, "GPS");
+            if (first_time_state) displayMenu(HOME_GPS);
             break;
         case HOME_ALL:
-            if (time_to_display) displayStr(90, 80, "ALL");
+            if (first_time_state) displayMenu(HOME_ALL);
             break;
         case HOME_SETTINGS:
-            if (time_to_display) displayStr(70, 80, "SETTINGS");
+            if (first_time_state) displayMenu(HOME_SETTINGS);
             break;
         case VARIO: 
             if (first_time_state) {
                 displayStatusBar();
                 displayVarioPage();
-                /*
-                displayStr(5, STATUS_BAR_OFFSET_Y+5, "Variometer mode");
-                
-                displayStr(5, STATUS_BAR_OFFSET_Y+100, "Altitude: ");
-                displayStr(185, STATUS_BAR_OFFSET_Y+100, "m");
-                displayStr(5, STATUS_BAR_OFFSET_Y+120, "Ascent: ");
-                displayStr(185, STATUS_BAR_OFFSET_Y+120, "m/s");
-                */
                 barometer_time = micros();
             }
             float altitude = getAltitude();
