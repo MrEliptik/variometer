@@ -16,7 +16,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/MrEliptik/variometer">
-    <img src="MEDIAS/vario_banner.png" alt="Logo" width="640">
+    <img src="MEDIAS/vario_banner.png" alt="Logo" width="800">
   </a>
 
   <h3 align="center"Variometer</h3>
