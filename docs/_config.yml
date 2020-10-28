@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
 title: ESP32 Variometer
 #description: [A short description of your site's purpose]
-logo: https://github.com/MrEliptik/variometer/blob/main/MEDIAS/vario_banner.png
+logo: ../MEDIAS/vario_banner.png
 show_downloads: true
