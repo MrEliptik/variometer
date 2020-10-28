@@ -8,13 +8,15 @@
 //TODO : update these pins with the ESP32
 #define GPS_PPS_PIN             0
 #define LED_PIN                 3
-#define BUZZER_PIN              14
+#define BUZZER_PIN              32
 #define SLCK_PIN                5
 #define MISO_PIN                6
 #define MOSI_PIN                7
 #define CS_PIN                  8
 
 #define JOYSTICK_PIN            36
+
+#define BUZZER_CHANNEL          0
 
 // ######### GENERAL #########
 #define LOOP_HERTZ              60                                  // Hz

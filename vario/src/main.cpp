@@ -30,7 +30,7 @@ const float SMOOTHING_WEIGHT = 0.15;
 
 JOYSTICK joystick_previous_state = NONE;
 
-VARIO_STATE vario_state = HOME_VARIO;
+VARIO_STATE vario_state = VARIO;
 // Different previous state to have a first update
 VARIO_STATE previous_vario_state = HOME_SETTINGS;
 
@@ -43,9 +43,15 @@ void setup() {
     displayStr(50, 80, "booting..");
 
     pinMode(JOYSTICK_PIN, INPUT);
+
+    // Setup buzzer
+    ledcSetup(BUZZER_CHANNEL, 10000, 8);
+    ledcAttachPin(BUZZER_PIN, BUZZER_CHANNEL);
+    ledcWriteTone(BUZZER_CHANNEL, 400);
     
     setupBarometer();
     delay(500);
+    ledcWriteTone(BUZZER_CHANNEL, 0);
     last_time = millis();
     display_time = micros();
 }
@@ -183,7 +189,8 @@ void loop() {
                 if (micros() > barometer_time + BAROMETER_TIME_US) {      
                     // Test fit with max values
                     //displayVarioInfos(10080.0, 1085.0, -20.5, ascent_rate);
-                    displayVarioInfos(altitude, pressure, temperature, ascent_rate);
+                    displayVarioInfos(altitude, pressure, temperature, avg_ascent_rate);
+                    beep(avg_ascent_rate);
                     barometer_time = micros();
                 } 
             }
@@ -250,20 +257,7 @@ void beep(float smoothed_ascent_rate) {
             curr_freq = smoothed_ascent_rate * final_freq / max_climb;
 
             // 1/bps to get the duration, * 1000 to switch to ms$
-            //TODO: to replace with 
-            /*
-            void setup() {
-                ledcSetup(0,1E5,12);
-                ledcAttachPin(25,0);
-                }
-                void loop() {
-                ledcWriteTone(0,800);
-                delay(1000);
-                uint8_t octave = 1;
-                ledcWriteNote(0,NOTE_C,octave);  
-                delay(1000);
-                }
-            */
+            ledcWriteTone(BUZZER_CHANNEL, curr_freq);
             //tone(BUZZER_PIN, curr_freq, curr_waiting_time);
         } 
         else if (smoothed_ascent_rate < sink_threshold) {
@@ -271,6 +265,7 @@ void beep(float smoothed_ascent_rate) {
         }
         else{
             curr_waiting_time = 1000.0;
+            ledcWriteTone(BUZZER_CHANNEL, 400);
             //tone(BUZZER_PIN, 400, curr_waiting_time);
         }
         time_started_tone = millis();
