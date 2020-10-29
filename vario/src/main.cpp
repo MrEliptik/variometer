@@ -57,7 +57,11 @@ void setup() {
 }
 
 void loop() {
+    Serial.print("loop() running on core ");
+    Serial.println(xPortGetCoreID());
+
     loop_time = micros();
+
     /*
     Serial.println("");
     Serial.println("###################");
@@ -74,8 +78,6 @@ void loop() {
     Serial.print("Altitude delta: ");
     Serial.println(getAltitudeDelta());
     */
-
-    //beep(smoothed_ascent_rate);
 
     /* Read input */
     JOYSTICK b = readButtons(JOYSTICK_PIN);
@@ -146,7 +148,6 @@ void loop() {
     switch(vario_state){
         case HOME_VARIO:
             if (first_time_state) displayMenu(HOME_VARIO);
-            //if (time_to_display) displayMenu(HOME_VARIO); //displayStr(90, 80, "VARIO");
             break;
         case HOME_COMPASS:
             if (first_time_state) displayMenu(HOME_COMPASS);
@@ -166,10 +167,10 @@ void loop() {
                 displayVarioPage();
                 barometer_time = micros();
             }
-            float altitude = getAltitude();
-            float ascent_rate = getAscentRate(last_time);
-            float pressure = getAbsolutePressure();
-            float temperature = getTemperature();
+            double temperature = getTemperature();
+            double pressure = getAbsolutePressure(temperature);
+            double altitude = getAltitude(pressure);
+            double ascent_rate = getAscentRate(altitude, last_time);
             
             Serial.print("Ascent rate: ");
             Serial.print(String(ascent_rate, 1));

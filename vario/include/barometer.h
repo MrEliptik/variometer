@@ -14,9 +14,14 @@ extern double last_altitude;
 
 int setupBarometer();
 
-float getTemperature();
-float getAbsolutePressure();
-float getAltitudeDelta();
-float getAltitude();
+double getTemperature();
+double getAbsolutePressure();
+double getAbsolutePressure(double temp);
+double getAltitudeDelta();
+double getAltitudeDelta(double pressure);
+double getAltitude();
+double getAltitude(double pressure);
+double getAscentRate(double last_reading_time);
+double getAscentRate(double altitude, unsigned long last_reading_time);
 
 #endif
