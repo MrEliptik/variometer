@@ -117,6 +117,10 @@ Victor MEUNIER - [@VicMeunier](https://twitter.com/VicMeunier) - victormeunier.d
 - [Blog](https://blog.victormeunier.com)
 
 
+You like my work and want to support me? 
+<a href="https://www.buymeacoffee.com/mreliptik" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/MrEliptik/variomete.svg?style=flat-square
