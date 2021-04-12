@@ -12,6 +12,8 @@
 [![Issues][issues-shield]][issues-url]
 [![Licence][license-shield]][license-url]
 
+**WARNING!! This project is on hold! It's not being actively developped and is in a very incomplete stage. If you're interested, please contact me.**
+
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
